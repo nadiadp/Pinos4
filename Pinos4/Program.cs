@@ -1,32 +1,42 @@
-﻿using GraphNS;
-using System;
-using System.Linq; 
+﻿/********************************************************************
+*** NAME : Program.cs ***
+*** CLASS : CSc 346 ***
+*** ASSIGNMENT : 4 ***
+*** DUE DATE : 04-02-25 ***
+*** INSTRUCTOR : GAMRADT ***
+*********************************************************************
+*** DESCRIPTION : This file contains the main entry point for the ***
+*** application and demonstrates the usage of the Graph ADT. ***
+********************************************************************/
 
-namespace Pinos4
+using GraphNS;
+using System;
+
+class Program
 {
-    class Program
+    /********************************************************************
+    *** METHOD Main ***
+    *********************************************************************
+    *** DESCRIPTION : The main entry point for the application. ***
+    *** INPUT ARGS : args ***
+    *** OUTPUT ARGS : none ***
+    *** IN/OUT ARGS : none ***
+    *** RETURN : void ***
+    ********************************************************************/
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            Console.WriteLine("=== Graph ADT Implementation ===");
+            Console.WriteLine("Graph ADT Implementation");
             
-            try
-            {
-                Graph graph = new Graph("graphdata.json");
-                Console.WriteLine($"Loaded {graph.Nodes.Count} nodes");
-                
-                if (graph.Nodes.Count > 0)
-                {
-                    Console.WriteLine($"\nNode 0 connects to: " + 
-                        string.Join(", ", graph.Nodes[0].AdjacentNodes
-                            .Select((connected, index) => connected ? index : -1)
-                            .Where(i => i != -1)));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
+            // Example usage
+            Graph graph = new Graph("graphdata.json");
+            
+            // Additional test code would go here
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
 }

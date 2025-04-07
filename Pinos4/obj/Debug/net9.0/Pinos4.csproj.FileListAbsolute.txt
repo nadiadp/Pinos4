@@ -1,16 +1,5 @@
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Data/graphdata.json
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Pinos4
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Pinos4.deps.json
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Pinos4.runtimeconfig.json
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Pinos4.dll
-/Users/nadiapinos/Pinos4/Pinos4/bin/Debug/net9.0/Pinos4.pdb
 /Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.GeneratedMSBuildEditorConfig.editorconfig
 /Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.AssemblyInfoInputs.cache
 /Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.AssemblyInfo.cs
 /Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.csproj.CoreCompileInputs.cache
 /Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.sourcelink.json
-/Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.dll
-/Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/refint/Pinos4.dll
-/Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.pdb
-/Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/Pinos4.genruntimeconfig.cache
-/Users/nadiapinos/Pinos4/Pinos4/obj/Debug/net9.0/ref/Pinos4.dll
