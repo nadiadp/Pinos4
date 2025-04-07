@@ -5,8 +5,7 @@
 *** DUE DATE : 04-02-25 ***
 *** INSTRUCTOR : GAMRADT ***
 *********************************************************************
-*** DESCRIPTION : This file defines the IProcessData interface which ***
-*** specifies the contract for classes that need to read data from storage. ***
+*** DESCRIPTION : Interface for data processing operations.
 ********************************************************************/
 
 namespace GraphNS
@@ -16,11 +15,11 @@ namespace GraphNS
         /********************************************************************
         *** METHOD ReadData ***
         *********************************************************************
-        *** DESCRIPTION : Reads data from the specified path. ***
-        *** INPUT ARGS : path ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
+        *** DESCRIPTION : Reads graph data from specified path.
+        *** INPUT ARGS : path - File path to read from
+        *** OUTPUT ARGS : none
+        *** IN/OUT ARGS : none
+        *** RETURN : void
         ********************************************************************/
         void ReadData(string path);
     }

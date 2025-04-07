@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pinos4")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a35767954823e01ace0a58d7a1641837c047acc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee0859a060f2552f629722af582606cb04251872")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pinos4")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pinos4")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

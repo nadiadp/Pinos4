@@ -5,10 +5,8 @@
 *** DUE DATE : 04-02-25 ***
 *** INSTRUCTOR : GAMRADT ***
 *********************************************************************
-*** DESCRIPTION : This file implements the Graph class which represents ***
-*** a graph data structure with nodes and their adjacency relationships. ***
-*** It includes functionality to read graph data from JSON files, ***
-*** manage node visitation, and find adjacent nodes. ***
+*** DESCRIPTION : Graph class to implement basic graph functionality
+***               including DFS and BFS using adjacency lists.
 ********************************************************************/
 
 using System;
@@ -18,106 +16,112 @@ using System.Text.Json;
 
 namespace GraphNS
 {
-    public class Graph : IProcessData
+    public class Graph
     {
-        private List<Node> _nodes;
+        private int numVertices;
+        private Dictionary<int, List<int>> adjacencyList;
 
         /********************************************************************
-        *** METHOD Graph (Constructor) ***
+        *** CONSTRUCTOR Graph ***
         *********************************************************************
-        *** DESCRIPTION : Initializes a new instance of the Graph class and ***
-        *** loads graph data from the specified file path. ***
-        *** INPUT ARGS : filePath ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : none ***
+        *** DESCRIPTION : Loads graph data from a JSON file and builds the graph.
+        *** INPUT ARGS : filename - JSON file path
+        *** OUTPUT ARGS : none
+        *** IN/OUT ARGS : none
         ********************************************************************/
-        public Graph(string filePath)
+        public Graph(string filename)
         {
-            ReadData(filePath);
+            adjacencyList = new Dictionary<int, List<int>>();
+            LoadFromJson(filename);
         }
 
         /********************************************************************
-        *** METHOD _ResetVisitedSet ***
+        *** METHOD LoadFromJson ***
         *********************************************************************
-        *** DESCRIPTION : Resets the WasVisited flag for all nodes in the graph. ***
-        *** INPUT ARGS : none ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
+        *** DESCRIPTION : Reads and parses a JSON file to build adjacency list.
+        *** INPUT ARGS : filename - JSON file path
+        *** OUTPUT ARGS : none
+        *** IN/OUT ARGS : none
+        *** RETURN : void
         ********************************************************************/
-        private void _ResetVisitedSet()
+        private void LoadFromJson(string filename)
         {
-            foreach (var node in _nodes)
+            string jsonString = File.ReadAllText(filename);
+            var data = JsonSerializer.Deserialize<Dictionary<string, List<int>>>(jsonString);
+            
+            if (data != null)
             {
-                node.WasVisited = false;
-            }
-        }
-
-        /********************************************************************
-        *** METHOD _FindAdjacentUnvisitedNode ***
-        *********************************************************************
-        *** DESCRIPTION : Finds and returns the first adjacent unvisited node ***
-        *** to the specified node. Returns null if none found. ***
-        *** INPUT ARGS : node ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : Node? ***
-        ********************************************************************/
-        private Node? _FindAdjacentUnvisitedNode(Node node)
-        {
-            for (int i = 0; i < node.AdjacentNodes.Count; i++)
-            {
-                if (node.AdjacentNodes[i] && !_nodes[i].WasVisited)
+                foreach (var kvp in data)
                 {
-                    return _nodes[i];
+                    int vertex = int.Parse(kvp.Key);
+                    adjacencyList[vertex] = kvp.Value;
                 }
+                numVertices = adjacencyList.Count;
             }
-            return null;
+            else
+            {
+                throw new Exception("Failed to parse graph data.");
+            }
         }
 
         /********************************************************************
-        *** METHOD _ViewNode ***
+        *** METHOD DepthFirstSearch ***
         *********************************************************************
-        *** DESCRIPTION : Displays information about a node including its ID ***
-        *** and visited status. ***
-        *** INPUT ARGS : node ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
+        *** DESCRIPTION : Performs DFS from the given start node.
+        *** INPUT ARGS : startVertex - vertex to start DFS
+        *** OUTPUT ARGS : none
+        *** RETURN : void
         ********************************************************************/
-        private void _ViewNode(Node node)
+        public void DepthFirstSearch(int startVertex)
         {
-            Console.Write(node.Id);
-            if (node.WasVisited)
-            {
-                Console.Write(" (visited)");
-            }
+            bool[] visited = new bool[numVertices];
+            DFSUtil(startVertex, visited);
             Console.WriteLine();
         }
 
-        /********************************************************************
-        *** METHOD ReadData ***
-        *********************************************************************
-        *** DESCRIPTION : Implements IProcessData interface method to read ***
-        *** graph data from a JSON file and deserialize it into Node objects. ***
-        *** INPUT ARGS : path ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
-        ********************************************************************/
-        public void ReadData(string path)
+        private void DFSUtil(int vertex, bool[] visited)
         {
-            try
+            visited[vertex] = true;
+            Console.Write(vertex + " ");
+
+            foreach (var neighbor in adjacencyList[vertex])
             {
-                string jsonString = File.ReadAllText(path);
-                _nodes = JsonSerializer.Deserialize<List<Node>>(jsonString) ?? new List<Node>();
+                if (!visited[neighbor])
+                    DFSUtil(neighbor, visited);
             }
-            catch (Exception ex)
+        }
+
+        /********************************************************************
+        *** METHOD BreadthFirstSearch ***
+        *********************************************************************
+        *** DESCRIPTION : Performs BFS from the given start node.
+        *** INPUT ARGS : startVertex - vertex to start BFS
+        *** OUTPUT ARGS : none
+        *** RETURN : void
+        ********************************************************************/
+        public void BreadthFirstSearch(int startVertex)
+        {
+            bool[] visited = new bool[numVertices];
+            Queue<int> queue = new Queue<int>();
+
+            visited[startVertex] = true;
+            queue.Enqueue(startVertex);
+
+            while (queue.Count > 0)
             {
-                Console.WriteLine($"Error reading file: {ex.Message}");
-                _nodes = new List<Node>();
+                int vertex = queue.Dequeue();
+                Console.Write(vertex + " ");
+
+                foreach (var neighbor in adjacencyList[vertex])
+                {
+                    if (!visited[neighbor])
+                    {
+                        visited[neighbor] = true;
+                        queue.Enqueue(neighbor);
+                    }
+                }
             }
+            Console.WriteLine();
         }
     }
 }

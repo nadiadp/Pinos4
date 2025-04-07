@@ -5,9 +5,7 @@
 *** DUE DATE : 04-02-25 ***
 *** INSTRUCTOR : GAMRADT ***
 *********************************************************************
-*** DESCRIPTION : This file defines the ISearchAlgorithms interface which ***
-*** specifies the contract for classes that implement graph search ***
-*** algorithms. ***
+*** DESCRIPTION : Interface defining contract for graph search algorithms.
 ********************************************************************/
 
 using System.Collections.Generic;
@@ -19,39 +17,37 @@ namespace GraphNS
         /********************************************************************
         *** PROPERTY Queue ***
         *********************************************************************
-        *** DESCRIPTION : Gets or sets the queue used for BFS traversal. ***
+        *** DESCRIPTION : Queue for BFS implementation.
         ********************************************************************/
         Queue<Node> Queue { get; set; }
 
         /********************************************************************
         *** PROPERTY Stack ***
         *********************************************************************
-        *** DESCRIPTION : Gets or sets the stack used for DFS traversal. ***
+        *** DESCRIPTION : Stack for DFS implementation.
         ********************************************************************/
         Stack<Node> Stack { get; set; }
 
         /********************************************************************
-        *** METHOD DepthFS ***
+        *** METHOD DepthFirstSearch ***
         *********************************************************************
-        *** DESCRIPTION : Performs depth-first search starting from the ***
-        *** specified node ID. ***
-        *** INPUT ARGS : start ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
+        *** DESCRIPTION : Performs Depth-First Search from starting node.
+        *** INPUT ARGS : start - Starting node ID
+        *** OUTPUT ARGS : none
+        *** IN/OUT ARGS : none
+        *** RETURN : void
         ********************************************************************/
-        void DepthFS(int start);
+        void DepthFirstSearch(int start);
 
         /********************************************************************
-        *** METHOD BreadthFS ***
+        *** METHOD BreadthFirstSearch ***
         *********************************************************************
-        *** DESCRIPTION : Performs breadth-first search starting from the ***
-        *** specified node ID. ***
-        *** INPUT ARGS : start ***
-        *** OUTPUT ARGS : none ***
-        *** IN/OUT ARGS : none ***
-        *** RETURN : void ***
+        *** DESCRIPTION : Performs Breadth-First Search from starting node.
+        *** INPUT ARGS : start - Starting node ID
+        *** OUTPUT ARGS : none
+        *** IN/OUT ARGS : none
+        *** RETURN : void
         ********************************************************************/
-        void BreadthFS(int start);
+        void BreadthFirstSearch(int start);
     }
 }
