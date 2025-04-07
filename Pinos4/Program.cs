@@ -1,5 +1,6 @@
 ﻿using GraphNS;
 using System;
+using System.Linq; 
 
 namespace Pinos4
 {
@@ -14,7 +15,6 @@ namespace Pinos4
                 Graph graph = new Graph("graphdata.json");
                 Console.WriteLine($"Loaded {graph.Nodes.Count} nodes");
                 
-                // Display first node's connections
                 if (graph.Nodes.Count > 0)
                 {
                     Console.WriteLine($"\nNode 0 connects to: " + 
